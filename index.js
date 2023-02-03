@@ -72,7 +72,7 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res) => { imageurl.handleApiCall(req, res)})
 
 //////////// HOST
-const DATABASE_URL = process.env.DATABASE_URL
-app.listen(3000, () => {
-    console.log(`Server is listening on port ${DATABASE_URL}.`);
+const port = process.env.PORT || 9001;
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}.`);
 });
