@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
-const cors = require('cors');
 const knex = require('knex');
+// const cors = require('cors');
 
 //////////// SEPARATION OF CONCERNS
 const register = require('./controllers/register');
@@ -25,7 +25,7 @@ const db = knex({
 //////////// EXPRESS & CORS
 const app = express();
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 //////////// TEMP DATABASE
 /*/ const database = {
