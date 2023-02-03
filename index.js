@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const knex = require('knex');
@@ -69,7 +70,7 @@ app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
 //////////// RANK INCREMENT
 app.put('/image', (req, res) => { image.handleImage(req, res, db)})
 //////////// API
-app.post('/imageurl', (req, res) => { imageurl.handleApiCall(req, res)})
+app.post('/imageurl', (req, res) => { imageurl.handleApiCall(req, res, fetch)})
 
 //////////// HOST
 const port = process.env.PORT || 9001;

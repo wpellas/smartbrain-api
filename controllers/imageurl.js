@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-const handleApiCall = (req, res) => {
+const handleApiCall = (req, res, fetch) => {
     const raw = JSON.stringify({
     user_app_id: {
       user_id: 'wpellas',
