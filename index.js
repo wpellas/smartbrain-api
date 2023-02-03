@@ -14,11 +14,11 @@ const imageurl = require('./controllers/imageurl')
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
+    host : 'db.dgmsidmkmfthpvriptyo.supabase.co',
     port : 5432,
     user : 'postgres',
-    password : 'loke',
-    database : 'smartbrain'
+    password : 'lokeLokEL12927--.1dLokE',
+    database : 'postgres'
   }
 });
 
