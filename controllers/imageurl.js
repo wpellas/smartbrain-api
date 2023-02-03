@@ -16,9 +16,9 @@ const handleApiCall = (req, res) => {
     });
     
     const requestOptions = {
-      method: "post",
+      method: 'post',
       headers: {
-        Accept: "application/json",
+        Accept: 'application/json',
         Authorization: 'Key 0fcde0454b5442ff8779ee309bedf2b2'
       },
       body: raw
