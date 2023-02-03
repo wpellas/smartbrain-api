@@ -1,14 +1,14 @@
-const express = require('express');
-const bcrypt = require('bcrypt-nodejs');
-const knex = require('knex');
-const cors = require('cors');
+import express, { json } from 'express';
+import bcrypt from 'bcrypt-nodejs';
+import knex from 'knex';
+import cors from 'cors';
 
 //////////// SEPARATION OF CONCERNS
-const register = require('./controllers/register');
-const signin = require('./controllers/signin');
-const profile = require('./controllers/profile');
-const image = require('./controllers/image');
-const imageurl = require('./controllers/imageurl')
+import { handleRegister } from './controllers/register';
+import { handleSignin } from './controllers/signin';
+import { handleProfileGet } from './controllers/profile';
+import { handleImage } from './controllers/image';
+import { handleApiCall } from './controllers/imageurl';
 
 //////////// KNEX DB
 const db = knex({
@@ -24,7 +24,7 @@ const db = knex({
 
 //////////// EXPRESS & CORS
 const app = express();
-app.use(express.json());
+app.use(json());
 app.use(cors());
 
 //////////// TEMP DATABASE
@@ -61,15 +61,15 @@ app.use(cors());
 //////////// HOME DATABASE SELECT
 app.get('/', (req, res) => { res.send(db.users) })
 //////////// SIGNIN
-app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt)})
+app.post('/signin', (req, res) => { handleSignin(req, res, db, bcrypt)})
 //////////// REGISTER
-app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
+app.post('/register', (req, res) => { handleRegister(req, res, db, bcrypt) })
 //////////// USER ID
-app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})
+app.get('/profile/:id', (req, res) => { handleProfileGet(req, res, db)})
 //////////// RANK INCREMENT
-app.put('/image', (req, res) => { image.handleImage(req, res, db)})
+app.put('/image', (req, res) => { handleImage(req, res, db)})
 //////////// API
-app.post('/imageurl', (req, res) => { imageurl.handleApiCall(req, res)})
+app.post('/imageurl', (req, res) => { handleApiCall(req, res)})
 
 //////////// HOST
 const port = process.env.PORT || 9001;
