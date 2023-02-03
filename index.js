@@ -1,8 +1,7 @@
-import fetch from 'node-fetch';
 const express = require('express');
+const cors = require('cors');
 const bcrypt = require('bcrypt-nodejs');
 const knex = require('knex');
-const cors = require('cors');
 
 //////////// SEPARATION OF CONCERNS
 const register = require('./controllers/register');
